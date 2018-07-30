@@ -357,7 +357,7 @@ class Modmail(commands.Bot):
             return await message.author.send(embed=self.blocked_em)
 
         em = discord.Embed(title='Спасибо за обращение!')
-        em.description = 'Команда сервера в скором времени даст свой ответ'
+        em.description = 'Команда сервера в скором времени даст свой ответ.'
         em.color = discord.Color.green()
 
         if channel is not None:
