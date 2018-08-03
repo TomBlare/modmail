@@ -168,7 +168,6 @@ class Modmail(commands.Bot):
                'Modifying the channel topic will also break the system.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
-        em.add_field(name='Github', value='https://github.com/verixx/modmail')
         em.set_footer(text='Star the repository to unlock hidden features!')
 
         return em
@@ -211,7 +210,7 @@ class Modmail(commands.Bot):
 
 
     @commands.command(name='close')
-    @commands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_messages=True)
     async def _close(self, ctx):
         '''Close the current thread.'''
         if 'User ID:' not in str(ctx.channel.topic):
@@ -369,7 +368,7 @@ class Modmail(commands.Bot):
                 category=categ
                 )
             await channel.edit(topic=topic)
-            await channel.send('@here', embed=self.format_info(message))
+            await channel.send('Открыт новый поток', embed=self.format_info(message))
 
     async def on_message(self, message):
         if message.author.bot:
@@ -398,7 +397,7 @@ class Modmail(commands.Bot):
         await ctx.send(f"Changed status to **{message}**")
 
     @commands.command()
-    @commands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_messages=True)
     async def block(self, ctx, id=None):
         '''Block a user from using modmail.'''
         if id is None:
@@ -419,7 +418,7 @@ class Modmail(commands.Bot):
             await ctx.send('User is already blocked.')
 
     @commands.command()
-    @commands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_messages=True)
     async def unblock(self, ctx, id=None):
         '''Unblocks a user from using modmail.'''
         if id is None:
