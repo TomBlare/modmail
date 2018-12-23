@@ -332,8 +332,8 @@ class Modmail(commands.Bot):
 
     @property
     def blocked_em(self):
-        em = discord.Embed(title='Message not sent!', color=discord.Color.red())
-        em.description = 'You have been blocked from using modmail.'
+        em = discord.Embed(title='Сообщение не отправлено!', color=discord.Color.red())
+        em.description = 'Вы были заблокированы от использования modmail.'
         return em
 
     async def process_modmail(self, message):
@@ -356,7 +356,7 @@ class Modmail(commands.Bot):
             return await message.author.send(embed=self.blocked_em)
 
         em = discord.Embed(title='Спасибо за обращение!')
-        em.description = 'Команда сервера в скором времени даст свой ответ.'
+        em.description = 'Персонал сервера в скором времени даст свой ответ.'
         em.color = discord.Color.green()
 
         if channel is not None:
@@ -404,7 +404,7 @@ class Modmail(commands.Bot):
             if 'User ID:' in str(ctx.channel.topic):
                 id = ctx.channel.topic.split('User ID: ')[1].strip()
             else:
-                return await ctx.send('No User ID provided.')
+                return await ctx.send('User ID не указан.')
 
         categ = discord.utils.get(ctx.guild.categories, name='Mod Mail')
         top_chan = categ.channels[0] #bot-info
@@ -413,9 +413,9 @@ class Modmail(commands.Bot):
 
         if id not in top_chan.topic:  
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully blocked!')
+            await ctx.send('Пользователь успешно заблокирован!')
         else:
-            await ctx.send('User is already blocked.')
+            await ctx.send('Пользователь уже заблокирован.')
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
@@ -425,7 +425,7 @@ class Modmail(commands.Bot):
             if 'User ID:' in str(ctx.channel.topic):
                 id = ctx.channel.topic.split('User ID: ')[1].strip()
             else:
-                return await ctx.send('No User ID provided.')
+                return await ctx.send('User ID не указан.')
 
         categ = discord.utils.get(ctx.guild.categories, name='Mod Mail')
         top_chan = categ.channels[0] #bot-info
@@ -434,9 +434,9 @@ class Modmail(commands.Bot):
 
         if id in top_chan.topic:
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully unblocked!')
+            await ctx.send('Пользователь успешно заблокирован!')
         else:
-            await ctx.send('User is not already blocked.')
+            await ctx.send('Пользователь уже заблокирован.')
 
     @commands.command(hidden=True, name='eval')
     async def _eval(self, ctx, *, body: str):
