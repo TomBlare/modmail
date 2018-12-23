@@ -203,7 +203,7 @@ class Modmail(commands.Bot):
                     if 'User ID:' in str(chan.topic):
                         user_id = int(chan.topic.split(': ')[1])
                         user = self.get_user(user_id)
-                        await user.send(f'**{ctx.author}** has closed this modmail session.')
+                        await user.send(f'**{ctx.author}** закрыл действующую сессию modmail.')
                     await chan.delete()
         await categ.delete()
         await ctx.send('Disabled modmail.')
@@ -218,7 +218,7 @@ class Modmail(commands.Bot):
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Поток закрыт')
-        em.description = f'**{ctx.author}** закрыл этот сеанс modmail. Чтобы связаться, напишите новое сообщение.'
+        em.description = f'**{ctx.author}** закрыл действующую сессию modmail. Чтобы связаться, напишите новое сообщение.'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
