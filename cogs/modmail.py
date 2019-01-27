@@ -391,6 +391,7 @@ class Modmail:
             await thread.reply(ctx.message)
     
     @commands.command()
+    @commands.has_permissions(manage_channels=True)
     async def anonreply(self, ctx, *, msg=''):
         """Reply to a thread anonymously. 
         
@@ -474,7 +475,7 @@ class Modmail:
 
     @commands.command()
     @trigger_typing
-    @commands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_messages=True)
     async def blocked(self, ctx):
         """Returns a list of blocked users"""
         em = discord.Embed(title='Blocked Users', color=discord.Color.blurple(), description='')
@@ -503,7 +504,7 @@ class Modmail:
 
     @commands.command()
     @trigger_typing
-    @commands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_messages=True)
     async def block(self, ctx, user: Union[discord.Member, discord.User, obj]=None, *, reason=None):
         """Block a user from using Modmail."""
 
@@ -537,7 +538,7 @@ class Modmail:
 
     @commands.command()
     @trigger_typing
-    @commands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_messages=True)
     async def unblock(self, ctx, *, user: Union[discord.Member, discord.User, obj]=None):
         """Unblocks a user from using Modmail."""
 
